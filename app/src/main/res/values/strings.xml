@@ -1,5 +1,5 @@
 <resources tools:ignore="ExtraTranslation" xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Книга рецептов</string>
+    <string name="app_name">StudFood</string>
     <string name="ingredients">Ингредиенты</string>
     <string name="technology">Способ приготовления</string>
     <string name="search_hint">Ведите название блюда или ингредиента</string>

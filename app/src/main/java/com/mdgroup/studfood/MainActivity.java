@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements FragmentInteracti
 
 
         database = new Database(this);
-        //database.deleteBase();
+        database.deleteBase();
         if (!database.baseNotEmpty()) {
             database.fillBase();
         }
