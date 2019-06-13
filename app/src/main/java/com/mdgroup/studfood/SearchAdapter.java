@@ -17,13 +17,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     private ArrayList<RecipeModel> filteredList;
     private ArrayList<String> stringList;
     private Context context;
-    private String searchText;
 
     public SearchAdapter(Context context, ArrayList<RecipeModel> recipeList, ArrayList<String> stringList) {
         this.context = context;
         this.filteredList = recipeList;
         this.stringList = stringList;
-        //this.searchText = searchText;
     }
 
     public void setClickListener(View.OnClickListener callback) {
@@ -53,49 +51,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     public void onBindViewHolder(SearchAdapter.ViewHolder holder, int position) {
         //Log.d(MainActivity.TAG, "onBindViewHolder post size = ");
 
-        searchText = stringList.get(0).toLowerCase();
-
         holder.nameSearchTextView.setText(filteredList.get(position).getName());
-
-
-        if (filteredList.size() > 0) {
-            String ingredients = filteredList.get(position).getIngredients().toLowerCase();
-
-            if (searchText.length() >= 3) {
-                int index = ingredients.indexOf(searchText);
-                if (index >= 0) {
-                    ArrayList<Integer> indexes = new ArrayList<>();
-                    while (index >= 0) {
-                        indexes.add(index);
-                        index = ingredients.indexOf(searchText, index + 1);
-                    }
-                    Log.d(MainActivity.TAG, searchText + ", array size = " + indexes.size());
-                    StringBuilder builder1 = new StringBuilder();
-                    for (int j = 0; j < indexes.size(); j++) {
-
-/*                        if (indexes.get(j) > 0) {
-                            for (int i = 0; i <= indexes.get(j); i++) {
-                                if (ingredients.charAt(indexes.get(j) - i - 1) == ' '
-                                || (ingredients.charAt(indexes.get(j) - i - 1) == '\n')) {
-                                    indexes.set(j, (indexes.get(j) - i));
-                                    return;
-                                }
-                            }
-                        }*/
-
-                        for (int i = indexes.get(j); i < ingredients.length(); i++) {
-
-                            if (ingredients.charAt(i) != '\n' && ingredients.charAt(i) != ' ') {
-                                builder1.append(ingredients.charAt(i));
-                            } else break;
-                        }
-                        builder1.append(" ");
-                    }
-                    String textIngredients = builder1.toString();
-                    holder.ingredientsSearchTextView.setText(textIngredients);
-                }
-            } else holder.ingredientsSearchTextView.setText("");
-        }
         holder.pictureSearchImageView.setImageDrawable(context.getResources()
                 .getDrawable(filteredList.get(position).getPictureID()));
         holder.pictureSearchImageView.setAdjustViewBounds(true);
@@ -111,13 +67,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameSearchTextView;
-        TextView ingredientsSearchTextView;
         ImageView pictureSearchImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             nameSearchTextView = itemView.findViewById(R.id.nameSearchTextView);
-            ingredientsSearchTextView = itemView.findViewById(R.id.ingredientsSearchTextView);
             pictureSearchImageView = itemView.findViewById(R.id.pictureSearchImageView);
         }
     }

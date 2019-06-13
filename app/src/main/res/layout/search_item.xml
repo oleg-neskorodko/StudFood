@@ -24,25 +24,15 @@
             <TextView
                 android:id="@+id/nameSearchTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:gravity="left"
+                android:gravity="center"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:text="text"
                 android:textColor="@color/colorGreen1"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/ingredientsSearchTextView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:gravity="left"
-                android:paddingLeft="10dp"
-                android:textColor="#000000"
-                android:textSize="18sp"/>
 
         </LinearLayout>
 
